@@ -171,7 +171,6 @@ export default {
         try {
           // Decode the credential to get user details
           const userDetails = decodeCredential(response.credential);
-          console.log("User Details:", userDetails);
 
           if (userDetails) {
             // Send user details to the backend for registration/login
@@ -185,7 +184,6 @@ export default {
             );
 
             if (data.token) {
-              console.log("Token received:", data.token);
               // Store the token and redirect to the main app page
               sessionStorage.setItem("e-token", data.token);
               this.$router.push("/course/all");

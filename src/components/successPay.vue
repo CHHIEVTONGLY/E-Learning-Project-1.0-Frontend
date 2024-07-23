@@ -1,6 +1,27 @@
 <template>
-  <div>
-    <h1 class="text-white">Successfully pay</h1>
+  <div class="flex items-center justify-center min-h-screen bg-gray-950">
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+      <div class="text-green-400">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-12 w-12 mx-auto mb-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2l4-4m0 0l6-6m-6 6v12m-6-6H3m12 0h6"
+          />
+        </svg>
+      </div>
+      <h2 class="text-2xl font-bold mb-2 text-white">Payment Successful!</h2>
+      <p class="text-gray-400 mb-4">
+        Thank you for your payment. Your transaction has been completed.
+      </p>
+    </div>
   </div>
 </template>
 
@@ -9,8 +30,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      courseID: localStorage.getItem("courseID"),
-      token: localStorage.getItem("e-token"),
+      courseID: sessionStorage.getItem("courseID"),
+      token: sessionStorage.getItem("e-token"),
       user: [],
     };
   },
@@ -21,7 +42,7 @@ export default {
     this.getUser();
   },
   unmounted() {
-    localStorage.removeItem("courseID");
+    sessionStorage.removeItem("courseID");
   },
   methods: {
     async getUser() {

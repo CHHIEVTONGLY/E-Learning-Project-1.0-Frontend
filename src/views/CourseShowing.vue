@@ -12,7 +12,6 @@
         frameborder="0"
         allowfullscreen
       ></iframe>
-      <h1 class="break-all mb-4">{{ URL }}</h1>
       <h1 class="text-xl font-semibold mb-2">Description</h1>
       <p class="mb-4">{{ courseData.description }}</p>
     </div>

@@ -69,15 +69,9 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   const token = sessionStorage.getItem("e-token");
 
-  console.log("Navigating to:", to.fullPath);
-  console.log("Requires Auth:", requiresAuth);
-  console.log("Token:", token);
-
   if (requiresAuth && !token) {
-    console.log("Redirecting to /login");
     next("/login");
   } else {
-    console.log("Proceeding to", to.fullPath);
     next();
   }
 });

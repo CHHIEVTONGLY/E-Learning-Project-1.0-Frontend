@@ -7,6 +7,7 @@
       <div>
         <button @click="goProfile" class="text-larger mt-4">
           <div
+          v-if="!user.picture"
             class="relative w-8 h-8 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"
           >
             <svg
@@ -22,8 +23,15 @@
               ></path>
             </svg>
           </div>
+          <img
+            v-if="user.picture"
+            class="relative w-8 h-8 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"
+            :src="user.picture"
+            alt=""
+          />
         </button>
       </div>
+
       <button
         @click="logout"
         class="bg-gradient-to-r from-cyan-500 to-purple-500 px-2 mt-4 rounded-lg"
