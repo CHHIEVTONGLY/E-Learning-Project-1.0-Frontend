@@ -74,7 +74,7 @@
               </p>
             </div>
 
-            <form action="#" class="mt-8 grid grid-cols-6 gap-6">
+            <form @submit.prevent="login" class="mt-8 grid grid-cols-6 gap-6">
               <div class="col-span-6">
                 <label
                   for="Email"
@@ -86,6 +86,8 @@
                 <input
                   v-model="email"
                   type="email"
+                  required
+                  autocomplete="email"
                   class="mt-1 w-full h-8 rounded-md border-gray-200 bg-white text-md text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                 />
               </div>
@@ -100,6 +102,8 @@
                 <input
                   v-model="password"
                   type="password"
+                  autocomplete="new-password"
+                  required
                   class="mt-1 w-full h-8 rounded-md border-gray-200 bg-white text-md text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
                 />
                 <div class="text-red-600">{{ errormsg }}</div>
