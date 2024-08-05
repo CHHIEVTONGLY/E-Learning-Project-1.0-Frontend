@@ -117,7 +117,10 @@
                           d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                         />
                       </svg>
-                      <p class="text-gray-300" v-if="!updateProfile.pictureFile">
+                      <p
+                        class="text-gray-300"
+                        v-if="!updateProfile.pictureFile"
+                      >
                         <span class="font-semibold">Drag & drop</span> or click
                         to upload thumbnail
                       </p>
@@ -372,7 +375,13 @@ export default {
       formData.append("password", this.updateProfile.password);
       formData.append("email", this.updateProfile.email);
 
+      const maxSize = 2 * 1024 * 1024;
+
       if (this.updateProfile.pictureFile) {
+        if (this.updateProfile.pictureFile.size > maxSize) {
+          alert("PFP size exceeds the 2MB limit");
+          return;
+        }
         formData.append("picture", this.updateProfile.pictureFile);
       } else if (this.updateProfile.pictureURL) {
         formData.append("picture", this.updateProfile.pictureURL);
@@ -395,7 +404,7 @@ export default {
 
         setTimeout(() => {
           window.location.reload();
-        }, 2000);
+        }, 1500);
       } catch (error) {
         console.error(error);
         this.sucessMessage = "";
@@ -403,7 +412,7 @@ export default {
         setTimeout(() => {
           this.sucessMessage = "";
           this.errorMessage = "";
-        }, 2000);
+        }, 1500);
       }
     },
   },
