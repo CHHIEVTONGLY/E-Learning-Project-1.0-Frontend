@@ -65,12 +65,11 @@
               <h1
                 class="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl dark:text-white"
               >
-                Welcome to Squid 🦑
+                Welcome to our E-Learning website 🦑
               </h1>
 
               <p class="mt-4 leading-relaxed text-gray-500 dark:text-gray-400">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.
+                Affordable price with good explaination.
               </p>
             </div>
 
