@@ -9,6 +9,7 @@ import cancelPay from "../components/cancelPay.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import CourseData from "@/components/courseData.vue";
 import CourseShowing from "@/views/CourseShowing.vue";
+import ABATesting from "@/views/ABATesting.vue";
 const routes = [
   {
     path: "/",
@@ -24,6 +25,11 @@ const routes = [
     path: "/register",
     name: "Register",
     component: RegisterView,
+  },
+  {
+    path: "/aba-pay",
+    name: "aba-pay",
+    component: ABATesting,
   },
   {
     path: "/complete-order",
