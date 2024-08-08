@@ -32,11 +32,6 @@ const routes = [
     component: ABATesting,
   },
   {
-    path: "/complete-order",
-    name: "Success",
-    component: successPay,
-  },
-  {
     path: "/cancel-order",
     name: "Cancel",
     component: cancelPay,
@@ -61,6 +56,11 @@ const routes = [
         path: ":id",
         name: "courseShowing",
         component: CourseShowing,
+      },
+      {
+        path: "complete-order",
+        name: "Success",
+        component: successPay,
       },
     ],
   },

@@ -12,7 +12,7 @@
         src="https://thevarsity.ca/wp-content/uploads/2018/07/Comment_Course-Selection_Troy-Lawrence-scaled.jpg"
         alt="Course Image"
       />
-      <div class="p-4">
+      <div class="p-4" @click="getCourseData">
         <h2 class="text-xl font-bold mb-2">{{ x.title }}</h2>
         <p class="text-gray-400">{{ x.description }}</p>
         <strong class="block mt-2">{{ x.price }} $</strong>
@@ -23,13 +23,23 @@
         >
           Learn now
         </button>
-        <button
-          v-else
-          @click="createOrder(x._id, x.title, x.description, x.price)"
-          class="mt-4 inline-block px-6 py-2 border border-indigo-600 text-indigo-600 font-medium text-sm leading-tight uppercase rounded hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-        >
-          Buy
-        </button>
+        <div v-else>
+          <button
+            @click="CreateABAPayment(x)"
+            class="mt-4 inline-block px-6 py-2 border border-indigo-600 text-indigo-600 font-medium text-sm leading-tight uppercase rounded hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+          >
+            Buy via ABA Bank
+          </button>
+
+          <button
+            @click="createOrder(x._id, x.title, x.description, x.price)"
+            class="mt-4 inline-block px-6 py-2 border border-indigo-600 text-indigo-600 font-medium text-sm leading-tight uppercase rounded hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+          >
+            Buy via PayPal
+          </button>
+        </div>
+
+        <div v-html="formData"></div>
       </div>
     </div>
   </div>
@@ -45,6 +55,8 @@ export default {
       token: sessionStorage.getItem("e-token"),
       user: [],
       coursePurchase: {},
+      item: null,
+      formData: null,
     };
   },
   mounted() {
@@ -113,6 +125,37 @@ export default {
         name: "courseShowing",
         params: { id: id },
       });
+    },
+    async CreateABAPayment(x) {
+      this.item = {
+        name: x.title,
+        quantity: 1,
+        price: x.price,
+      };
+
+      sessionStorage.setItem("courseID", x._id);
+
+      try {
+        const response = await axios.post(
+          `${process.env.VUE_APP_BASE_URL}/aba/checkout`,
+          { item: this.item }
+        );
+        this.formData = response.data;
+
+        // Wait until the form is rendered and then submit it
+
+        this.$nextTick(() => {
+          const form = document.querySelector("#aba_merchant_url");
+          if (form) {
+            form.submit();
+          } else {
+            console.error("Form element not found.");
+          }
+        });
+      } catch (error) {
+        console.error("Error creating order:", error);
+        alert("Failed to create order. Please try again.");
+      }
     },
   },
 };
