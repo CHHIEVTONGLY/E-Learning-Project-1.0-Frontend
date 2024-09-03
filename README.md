@@ -1,21 +1,34 @@
-# E Learning frontend
+# E Learning website
 
 I create this project for e-learning website that selling some course in the website so user can access and learn from internet. 
 
-On this project I'm using VueJS NodeJS ExpressJS MongoDB as backend.
-For Deployment I'm using DigitalOcean to host the server & Vercel for frontend. 
+## Language that i use in this project : 
+1. Vue JS
+2. Express JS
+3. Node JS
+4. MongoDB
 
-### [Visit my website ](https://e-learning-website-plum.vercel.app/)
 
 ## What do I use in in this project 
 
 1. Google login/sign up intergration
 2. Drag & drop from local file into AWS S3
-3. We use **Paypal** for international payment & **ABA Pay** for local payment (sandbox) 
-4. CRUD
+3. We use **Paypal** for international payment & **ABA Pay** for local payment (sandbox)
+    - ABA integration is not working right now because it expired **ABA only provide us 1 month merchant only**
+    - For more detail about ABA integration watch the video below ! 
+5. CRUD
 
 > [!IMPORTANT]
-> [Click here to check website demo video](https://www.youtube.com/watch?v=xpQpZSKhvVs)
+> [ Website Demo Video ](https://www.youtube.com/watch?v=xpQpZSKhvVs)
+
+## Website URL  
+
+1. [ Website domain ](https://e-learning-website-plum.vercel.app/)
+   - I'm using **Vercel** for hosting front-end
+   - [ Vercel Website ](https://vercel.com/)
+2. [ Server domain ](https://e-learning-project-yoca2.ondigitalocean.app/api)
+   - I'm using **Digital Ocean** for hosting server-side
+   - [ Digital Ocean webiste ](https://cloud.digitalocean.com/)
 
 
 ## Explaination
